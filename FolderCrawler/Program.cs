@@ -21,7 +21,7 @@ namespace FolderCrawler
             Console.WriteLine("DO YOU WANT ALL OR NO ?");
             string boolenak = Console.ReadLine();
             bool myBool = bool.Parse(boolenak);
-            Algo.BFS(root, filename, myBool);
+            Algo.DFS(root, filename, myBool);
             Console.ReadKey();
         }
   }

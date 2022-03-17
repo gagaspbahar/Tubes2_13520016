@@ -39,5 +39,29 @@ namespace FolderCrawler
                 }
             }
         }
+        public static void DFS(string root, string fileName, bool singleSearch)
+        {
+            string[] files = Directory.GetFiles(root);
+            string[] subDirectories = Directory.GetDirectories(root);
+
+            foreach(string subDirectory in subDirectories)
+            {
+                Console.WriteLine("NOW SEARCHING IN DIRECTORY : {0}", subDirectory);
+                DFS(subDirectory, fileName, singleSearch);
+            }
+
+            foreach(string file in files)
+            {
+                if (file.Contains(fileName))
+                {
+                    Console.WriteLine("FILE FOUND ! Directory = {0}", root);
+                    Console.WriteLine("--------------------------------------");
+                    if (singleSearch)
+                    {
+                        return;
+                    }
+                }
+            }
+        }
     }
 }
