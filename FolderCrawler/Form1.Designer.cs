@@ -1,6 +1,6 @@
 ﻿namespace FolderCrawler
 {
-    partial class Form1
+    partial class FolderCrawlerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -66,7 +66,7 @@
             this.output.Text = "Output";
             this.output.Click += new System.EventHandler(this.label1_Click_1);
             // 
-            // Form1
+            // FolderCrawlerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -74,8 +74,9 @@
             this.Controls.Add(this.output);
             this.Controls.Add(this.input);
             this.Controls.Add(this.header);
-            this.Name = "Form1";
+            this.Name = "FolderCrawlerForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

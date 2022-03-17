@@ -14,15 +14,18 @@ namespace FolderCrawler
     [STAThread]
     static void Main()
     {
-            Console.WriteLine("Enter root dir :");
-            string root = Console.ReadLine();
-            Console.WriteLine("Enter filename :");
-            string filename = Console.ReadLine();
-            Console.WriteLine("DO YOU WANT ALL OR NO ?");
-            string boolenak = Console.ReadLine();
-            bool myBool = bool.Parse(boolenak);
-            Algo.DFS(root, filename, myBool);
-            Console.ReadKey();
+            // Console.WriteLine("Enter root dir :");
+            // string root = Console.ReadLine();
+            // Console.WriteLine("Enter filename :");
+            // string filename = Console.ReadLine();
+            // Console.WriteLine("DO YOU WANT ALL OR NO ?");
+            // string boolenak = Console.ReadLine();
+            // bool myBool = bool.Parse(boolenak);
+            // Algo.BFS(root, filename, myBool);
+            // Console.ReadKey();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new FolderCrawlerForm());
         }
   }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FolderCrawler
 {
-    public partial class Form1 : Form
+    public partial class FolderCrawlerForm : Form
     {
-        public Form1()
+        public FolderCrawlerForm()
         {
             InitializeComponent();
         }
@@ -28,6 +28,11 @@ namespace FolderCrawler
         }
 
         private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }
