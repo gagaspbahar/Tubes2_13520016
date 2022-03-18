@@ -9,8 +9,9 @@ namespace FolderCrawler
 {
     public class Algo
     {
-        public static void BFS(string root, string fileName, bool singleSearch)
+        public static void BFS(string root, string fileName, bool SearchAll)
         {
+
             Queue<string> DirectoryQueue = new Queue<string>();
             DirectoryQueue.Enqueue(root);
             while(DirectoryQueue.Count > 0)
@@ -31,7 +32,7 @@ namespace FolderCrawler
                     {
                         Console.WriteLine("FILE FOUND ! Directory = {0}", entry);
                         Console.WriteLine("--------------------------------------");
-                        if (singleSearch)
+                        if (!SearchAll)
                         {
                             return;
                         }
@@ -39,15 +40,16 @@ namespace FolderCrawler
                 }
             }
         }
-        public static void DFS(string root, string fileName, bool singleSearch)
+        public static void DFS(string root, string fileName, bool SearchAll)
         {
+  
             string[] files = Directory.GetFiles(root);
             string[] subDirectories = Directory.GetDirectories(root);
 
             foreach(string subDirectory in subDirectories)
             {
                 Console.WriteLine("NOW SEARCHING IN DIRECTORY : {0}", subDirectory);
-                DFS(subDirectory, fileName, singleSearch);
+                DFS(subDirectory, fileName, SearchAll);
             }
 
             foreach(string file in files)
@@ -56,7 +58,7 @@ namespace FolderCrawler
                 {
                     Console.WriteLine("FILE FOUND ! Directory = {0}", root);
                     Console.WriteLine("--------------------------------------");
-                    if (singleSearch)
+                    if (!SearchAll)
                     {
                         return;
                     }
