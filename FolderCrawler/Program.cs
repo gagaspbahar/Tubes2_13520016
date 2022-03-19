@@ -29,5 +29,7 @@ namespace FolderCrawler
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FolderCrawlerForm());
         }
-  }
+
+    }
 }
+

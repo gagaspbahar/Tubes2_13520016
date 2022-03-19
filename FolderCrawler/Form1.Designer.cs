@@ -35,13 +35,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.DFSButton = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.chooseFolder = new System.Windows.Forms.Button();
-            this.chosenFile = new System.Windows.Forms.Label();
             this.inputFilename = new System.Windows.Forms.TextBox();
             this.allOccurence = new System.Windows.Forms.CheckBox();
+            this.chosenFile = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // BFSRadioButton
@@ -81,7 +82,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(456, 50);
+            this.label3.Location = new System.Drawing.Point(501, 50);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 24);
             this.label3.TabIndex = 9;
@@ -117,18 +118,18 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "Input Metode Pencarian";
             // 
-            // radioButton1
+            // DFSButton
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(51, 315);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(52, 19);
-            this.radioButton1.TabIndex = 13;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "DFS";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.DFSButton.AutoSize = true;
+            this.DFSButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DFSButton.Location = new System.Drawing.Point(51, 315);
+            this.DFSButton.Name = "DFSButton";
+            this.DFSButton.Size = new System.Drawing.Size(52, 19);
+            this.DFSButton.TabIndex = 13;
+            this.DFSButton.TabStop = true;
+            this.DFSButton.Text = "DFS";
+            this.DFSButton.UseVisualStyleBackColor = true;
+            this.DFSButton.CheckedChanged += new System.EventHandler(this.DFSButton_CheckedChanged);
             // 
             // button1
             // 
@@ -147,23 +148,13 @@
             // 
             this.chooseFolder.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.chooseFolder.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.chooseFolder.Location = new System.Drawing.Point(53, 124);
+            this.chooseFolder.Location = new System.Drawing.Point(53, 121);
             this.chooseFolder.Name = "chooseFolder";
             this.chooseFolder.Size = new System.Drawing.Size(96, 27);
             this.chooseFolder.TabIndex = 15;
             this.chooseFolder.Text = "Choose Folder...";
             this.chooseFolder.UseVisualStyleBackColor = false;
             this.chooseFolder.Click += new System.EventHandler(this.chooseFolder_Click);
-            // 
-            // chosenFile
-            // 
-            this.chosenFile.AutoSize = true;
-            this.chosenFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chosenFile.Location = new System.Drawing.Point(155, 130);
-            this.chosenFile.Name = "chosenFile";
-            this.chosenFile.Size = new System.Drawing.Size(93, 13);
-            this.chosenFile.TabIndex = 16;
-            this.chosenFile.Text = "No File Chosen";
             // 
             // inputFilename
             // 
@@ -188,17 +179,36 @@
             this.allOccurence.UseVisualStyleBackColor = true;
             this.allOccurence.CheckedChanged += new System.EventHandler(this.allOccurence_CheckedChanged);
             // 
+            // chosenFile
+            // 
+            this.chosenFile.AutoEllipsis = true;
+            this.chosenFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chosenFile.Location = new System.Drawing.Point(155, 128);
+            this.chosenFile.Name = "chosenFile";
+            this.chosenFile.Size = new System.Drawing.Size(237, 13);
+            this.chosenFile.TabIndex = 16;
+            this.chosenFile.Text = "No File Chosen";
+            this.chosenFile.UseCompatibleTextRendering = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(354, 87);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(374, 322);
+            this.panel1.TabIndex = 20;
+            // 
             // FolderCrawlerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(758, 479);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.allOccurence);
             this.Controls.Add(this.inputFilename);
             this.Controls.Add(this.chosenFile);
             this.Controls.Add(this.chooseFolder);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.DFSButton);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -222,13 +232,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton DFSButton;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button chooseFolder;
-        private System.Windows.Forms.Label chosenFile;
         private System.Windows.Forms.TextBox inputFilename;
         private System.Windows.Forms.CheckBox allOccurence;
+        private System.Windows.Forms.Label chosenFile;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
