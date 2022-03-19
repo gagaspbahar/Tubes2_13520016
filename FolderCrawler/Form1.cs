@@ -20,6 +20,7 @@ namespace FolderCrawler
         string methodUsed;
         public void wait(int milliseconds)
         {
+            //fungsi wait biar graph dibuatnya ga instan, biar bisa "munculin satu - satu (bonus)"
             var timer1 = new System.Windows.Forms.Timer();
             if (milliseconds == 0 || milliseconds < 0) return;
 
@@ -41,9 +42,33 @@ namespace FolderCrawler
             }
         }
 
-        public void colorGraph(string directory, Microsoft.Msagl.Drawing.Graph graph)
+        public void colorGraph(string entry, Microsoft.Msagl.Drawing.Graph graph)
         {
-            //TODO
+            //fungsi buat warnain semua node yang menuju file ketemu
+            Microsoft.Msagl.Drawing.Node currentNode = graph.FindNode(entry);
+            currentNode.Attr.FillColor = Microsoft.Msagl.Drawing.Color.PaleGreen;
+            for (int i = 0; i < entry.Length; i++)
+            {
+                if (entry[i] == Path.DirectorySeparatorChar)
+                {
+                    string sliced = entry.Substring(0, i);
+                    currentNode = graph.FindNode(sliced);
+                    if (currentNode != null)
+                    {
+                        currentNode.Attr.FillColor = Microsoft.Msagl.Drawing.Color.PaleGreen;
+                    }
+                }
+            }
+        }
+
+        public void showGraph(Microsoft.Msagl.GraphViewerGdi.GViewer viewer, Microsoft.Msagl.Drawing.Graph graph)
+        {
+            //fungsi buat nunjukin/update graph
+            viewer.Graph = graph;
+            panel1.SuspendLayout();
+            viewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel1.Controls.Add(viewer);
+            panel1.ResumeLayout();
         }
 
         public  void BFS(string root, string fileName, bool SearchAll)
@@ -74,55 +99,32 @@ namespace FolderCrawler
                     child.LabelText = subDirectoryName;
 
                     DirectoryQueue.Enqueue(subDirectory);
-                    viewer.Graph = graph;
-                    panel1.SuspendLayout();
-                    viewer.Dock = System.Windows.Forms.DockStyle.Fill;
-                    panel1.Controls.Add(viewer);
-                    panel1.ResumeLayout();
+                    showGraph(viewer,graph);
                 }
                 foreach (string entry in fileEntries)
                 {
-                    wait(100); //Biar bisa munculin satu - satu galangsung semua
+                    wait(100); 
 
                     string fileLastName = new DirectoryInfo(entry).Name;
                     graph.AddEdge(queueHead, entry);
 
-                    //4 line kebawah ini buat ngakalin soalnya kalo diambil nama akhirnya doang
-                    //pas di add edge malah ke node yang sama soalnya namanya sama
-                    //jadi awalnya addedgenya pake nama full directorynya terus labeltextnya diganti abis itu
                     Microsoft.Msagl.Drawing.Node parent = graph.FindNode(queueHead);
                     Microsoft.Msagl.Drawing.Node child = graph.FindNode(entry);
 
+                    //ganti nama node dari directory jadi nama file/directornya doang
                     parent.LabelText = dirName;
                     child.LabelText = fileLastName;
 
+                    showGraph(viewer, graph);
                     if (entry.Contains(fileName))
                     {
-                        string[] directories = entry.Split(Path.DirectorySeparatorChar);
-                        foreach (string d in directories)
-                        {
-                            Console.WriteLine(d);
-                            Microsoft.Msagl.Drawing.Node currentNode = graph.FindNode(d);
-                            if (currentNode != null)
-                            {
-                                currentNode.Attr.FillColor = Microsoft.Msagl.Drawing.Color.PaleGreen;
-                            }
 
-                        }
-                        //Console.WriteLine("FILE FOUND ! Directory = {0}", entry);
-                        //Console.WriteLine("--------------------------------------");
+                        colorGraph(entry, graph);
                         if (!SearchAll)
                         {
                             return;
                         }
                     }
-
-                    // Buat munculin ato update graph
-                    viewer.Graph = graph;
-                    panel1.SuspendLayout();
-                    viewer.Dock = System.Windows.Forms.DockStyle.Fill;
-                    panel1.Controls.Add(viewer);
-                    panel1.ResumeLayout();
 
                 } 
             }
@@ -145,12 +147,8 @@ namespace FolderCrawler
                 var dirName = new DirectoryInfo(root).Name;
                 parent.LabelText = dirName;
                 child.LabelText = subDirectoryName;
-                
-                viewer.Graph = graph;
-                panel1.SuspendLayout();
-                viewer.Dock = System.Windows.Forms.DockStyle.Fill;
-                panel1.Controls.Add(viewer);
-                panel1.ResumeLayout();
+
+                showGraph(viewer, graph);
                 // REKURSIF
                 DFS(viewer, graph, subDirectory, fileName, SearchAll);
             }
@@ -168,15 +166,10 @@ namespace FolderCrawler
                 parent.LabelText = dirName;
                 child.LabelText = fileLastName;
 
-                viewer.Graph = graph;
-                panel1.SuspendLayout();
-                viewer.Dock = System.Windows.Forms.DockStyle.Fill;
-                panel1.Controls.Add(viewer);
-                panel1.ResumeLayout();
+                showGraph(viewer, graph);
                 if (file.Contains(fileName))
                 {
-                    Console.WriteLine("FILE FOUND ! Directory = {0}", root);
-                    Console.WriteLine("--------------------------------------");
+                    colorGraph(file,graph);
                     if (!SearchAll)
                     {
                         return;
@@ -184,6 +177,7 @@ namespace FolderCrawler
                 }
             }
         }
+
         public FolderCrawlerForm()
         {
             InitializeComponent();
@@ -251,9 +245,6 @@ namespace FolderCrawler
             }
         }
 
-        private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }
