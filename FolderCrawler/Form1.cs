@@ -42,7 +42,6 @@ namespace FolderCrawler
         }
         public  void BFS(string root, string fileName, bool SearchAll)
         {
-            panel1.Controls.Clear();
             Microsoft.Msagl.GraphViewerGdi.GViewer viewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
             Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
 
@@ -110,27 +109,53 @@ namespace FolderCrawler
                     panel1.ResumeLayout();
                 }
             }
-            
- 
-
         }
 
-        public void DFS(string root, string fileName, bool SearchAll)
+        public void DFS(Microsoft.Msagl.GraphViewerGdi.GViewer viewer, Microsoft.Msagl.Drawing.Graph graph, string root, string fileName, bool SearchAll)
         {
-            panel1.Controls.Clear();
-            Microsoft.Msagl.GraphViewerGdi.GViewer viewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
-            Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
             string[] files = Directory.GetFiles(root);
             string[] subDirectories = Directory.GetDirectories(root);
 
             foreach (string subDirectory in subDirectories)
             {
-                Console.WriteLine("NOW SEARCHING IN DIRECTORY : {0}", subDirectory);
-                DFS(subDirectory, fileName, SearchAll);
+                wait(100);
+                var subDirectoryName = new DirectoryInfo(subDirectory).Name;
+                graph.AddEdge(root, subDirectory);
+
+                Microsoft.Msagl.Drawing.Node parent = graph.FindNode(root);
+                Microsoft.Msagl.Drawing.Node child = graph.FindNode(subDirectory);
+
+                var dirName = new DirectoryInfo(root).Name;
+                parent.LabelText = dirName;
+                child.LabelText = subDirectoryName;
+                
+                viewer.Graph = graph;
+                panel1.SuspendLayout();
+                viewer.Dock = System.Windows.Forms.DockStyle.Fill;
+                panel1.Controls.Add(viewer);
+                panel1.ResumeLayout();
+                // REKURSIF
+                DFS(viewer, graph, subDirectory, fileName, SearchAll);
             }
 
             foreach (string file in files)
             {
+                wait(100);
+                var fileLastName = new DirectoryInfo(file).Name;
+                graph.AddEdge(root, file);
+
+                Microsoft.Msagl.Drawing.Node parent = graph.FindNode(root);
+                Microsoft.Msagl.Drawing.Node child = graph.FindNode(file);
+
+                var dirName = new DirectoryInfo(root).Name;
+                parent.LabelText = dirName;
+                child.LabelText = fileLastName;
+
+                viewer.Graph = graph;
+                panel1.SuspendLayout();
+                viewer.Dock = System.Windows.Forms.DockStyle.Fill;
+                panel1.Controls.Add(viewer);
+                panel1.ResumeLayout();
                 if (file.Contains(fileName))
                 {
                     Console.WriteLine("FILE FOUND ! Directory = {0}", root);
@@ -162,13 +187,16 @@ namespace FolderCrawler
 
         private void button1_Click(object sender, EventArgs e)
         {
+            panel1.Controls.Clear();
             if (methodUsed == "BFS")
             {
                 BFS(root, filename, findAll);
             }
             else if(methodUsed == "DFS")
             {
-                DFS(root, filename, findAll);
+                Microsoft.Msagl.GraphViewerGdi.GViewer viewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
+                Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
+                DFS(viewer, graph, root, filename, findAll);
             }
         }
 
@@ -204,6 +232,11 @@ namespace FolderCrawler
             {
                 methodUsed = "DFS";
             }
+        }
+
+        private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
+        {
+
         }
     }
 }
