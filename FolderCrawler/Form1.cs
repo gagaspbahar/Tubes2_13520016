@@ -40,6 +40,12 @@ namespace FolderCrawler
                 Application.DoEvents();
             }
         }
+
+        public void colorGraph(string directory, Microsoft.Msagl.Drawing.Graph graph)
+        {
+            //TODO
+        }
+
         public  void BFS(string root, string fileName, bool SearchAll)
         {
             Microsoft.Msagl.GraphViewerGdi.GViewer viewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
@@ -55,40 +61,6 @@ namespace FolderCrawler
                 string[] subDirectories = Directory.GetDirectories(queueHead);
                 var dirName = new DirectoryInfo(queueHead).Name;
 
-
-                foreach (string entry in fileEntries)
-                {
-                    wait(100); //Biar bisa munculin satu - satu galangsung semua
-                    var fileLastName = new DirectoryInfo(entry).Name; 
-
-                    graph.AddEdge(queueHead, entry);
-
-                    //4 line kebawah ini buat ngakalin soalnya kalo diambil nama akhirnya doang
-                    //pas di add edge malah ke node yang sama soalnya namanya sama
-                    //jadi awalnya addedgenya pake nama full directorynya terus labeltextnya diganti abis itu
-                    Microsoft.Msagl.Drawing.Node parent = graph.FindNode(queueHead);
-                    Microsoft.Msagl.Drawing.Node child = graph.FindNode(entry);
-
-                    parent.LabelText = dirName;
-                    child.LabelText = fileLastName;
-
-                    // Buat munculin ato update graph
-                    viewer.Graph = graph;
-                    panel1.SuspendLayout();
-                    viewer.Dock = System.Windows.Forms.DockStyle.Fill;
-                    panel1.Controls.Add(viewer);
-                    panel1.ResumeLayout();
-                    if (entry.Contains(fileName))
-                    {
-
-                        Console.WriteLine("FILE FOUND ! Directory = {0}", entry);
-                        Console.WriteLine("--------------------------------------");
-                        if (!SearchAll)
-                        {
-                            return;
-                        }
-                    }
-                }
                 foreach (string subDirectory in subDirectories)
                 {
                     wait(100);
@@ -108,6 +80,51 @@ namespace FolderCrawler
                     panel1.Controls.Add(viewer);
                     panel1.ResumeLayout();
                 }
+                foreach (string entry in fileEntries)
+                {
+                    wait(100); //Biar bisa munculin satu - satu galangsung semua
+
+                    string fileLastName = new DirectoryInfo(entry).Name;
+                    graph.AddEdge(queueHead, entry);
+
+                    //4 line kebawah ini buat ngakalin soalnya kalo diambil nama akhirnya doang
+                    //pas di add edge malah ke node yang sama soalnya namanya sama
+                    //jadi awalnya addedgenya pake nama full directorynya terus labeltextnya diganti abis itu
+                    Microsoft.Msagl.Drawing.Node parent = graph.FindNode(queueHead);
+                    Microsoft.Msagl.Drawing.Node child = graph.FindNode(entry);
+
+                    parent.LabelText = dirName;
+                    child.LabelText = fileLastName;
+
+                    if (entry.Contains(fileName))
+                    {
+                        string[] directories = entry.Split(Path.DirectorySeparatorChar);
+                        foreach (string d in directories)
+                        {
+                            Console.WriteLine(d);
+                            Microsoft.Msagl.Drawing.Node currentNode = graph.FindNode(d);
+                            if (currentNode != null)
+                            {
+                                currentNode.Attr.FillColor = Microsoft.Msagl.Drawing.Color.PaleGreen;
+                            }
+
+                        }
+                        //Console.WriteLine("FILE FOUND ! Directory = {0}", entry);
+                        //Console.WriteLine("--------------------------------------");
+                        if (!SearchAll)
+                        {
+                            return;
+                        }
+                    }
+
+                    // Buat munculin ato update graph
+                    viewer.Graph = graph;
+                    panel1.SuspendLayout();
+                    viewer.Dock = System.Windows.Forms.DockStyle.Fill;
+                    panel1.Controls.Add(viewer);
+                    panel1.ResumeLayout();
+
+                } 
             }
         }
 
