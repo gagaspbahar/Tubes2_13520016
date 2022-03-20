@@ -46,20 +46,31 @@ namespace FolderCrawler
         {
             //fungsi buat warnain semua node yang menuju file ketemu
             Microsoft.Msagl.Drawing.Node currentNode = null;
+            Microsoft.Msagl.Drawing.Color nodeColor = Microsoft.Msagl.Drawing.Color.PaleGreen;
+            Microsoft.Msagl.Drawing.Color edgeColor = Microsoft.Msagl.Drawing.Color.Green;
+
             for (int i = 0; i < entry.Length; i++)
             {
                 if (entry[i] == Path.DirectorySeparatorChar)
                 {
+
+                    string sliced = entry.Substring(0, i);
                     currentNode = graph.FindNode(sliced);
+
                     if (currentNode != null)
                     {
-                        currentNode.Attr.FillColor = Microsoft.Msagl.Drawing.Color.PaleGreen;
+                        foreach (Microsoft.Msagl.Drawing.Edge edge in currentNode.InEdges)
+                        {
+                            edge.Attr.Color = edgeColor;
+                        }
+                        currentNode.Attr.FillColor = nodeColor;
                     }
-                    
                 }
             }
-            currentNode = graph.FindNode(entry); 
-            currentNode.Attr.FillColor = Microsoft.Msagl.Drawing.Color.PaleGreen;
+            currentNode = graph.FindNode(entry);
+            currentNode.Attr.FillColor = nodeColor;
+            IEnumerable<Microsoft.Msagl.Drawing.Edge> edges = currentNode.InEdges;
+            edges.ElementAt(0).Attr.Color = edgeColor;
         }
 
         public void showGraph(Microsoft.Msagl.GraphViewerGdi.GViewer viewer, Microsoft.Msagl.Drawing.Graph graph)
@@ -76,6 +87,8 @@ namespace FolderCrawler
         {
             Microsoft.Msagl.GraphViewerGdi.GViewer viewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
             Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
+            Microsoft.Msagl.Drawing.Color redColor = Microsoft.Msagl.Drawing.Color.Red;
+            Microsoft.Msagl.Drawing.Color roseColor = Microsoft.Msagl.Drawing.Color.MistyRose;
 
             Queue<string> DirectoryQueue = new Queue<string>();
             DirectoryQueue.Enqueue(root);
@@ -144,10 +157,16 @@ namespace FolderCrawler
             {
                 wait(100);
                 var subDirectoryName = new DirectoryInfo(subDirectory).Name;
-                graph.AddEdge(root, subDirectory);
+                graph.AddEdge(root, subDirectory).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
 
                 Microsoft.Msagl.Drawing.Node parent = graph.FindNode(root);
                 Microsoft.Msagl.Drawing.Node child = graph.FindNode(subDirectory);
+                if (parent.Attr.FillColor != Microsoft.Msagl.Drawing.Color.PaleGreen)
+                {
+                    parent.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
+                }
+                
+                child.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
 
                 var dirName = new DirectoryInfo(root).Name;
                 parent.LabelText = dirName;
@@ -162,7 +181,7 @@ namespace FolderCrawler
             {
                 wait(100);
                 var fileLastName = new DirectoryInfo(file).Name;
-                graph.AddEdge(root, file);
+                graph.AddEdge(root, file).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
 
                 Microsoft.Msagl.Drawing.Node parent = graph.FindNode(root);
                 Microsoft.Msagl.Drawing.Node child = graph.FindNode(file);
@@ -170,6 +189,11 @@ namespace FolderCrawler
                 var dirName = new DirectoryInfo(root).Name;
                 parent.LabelText = dirName;
                 child.LabelText = fileLastName;
+                if(parent.Attr.FillColor != Microsoft.Msagl.Drawing.Color.PaleGreen)
+                {
+                    parent.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
+                }
+                child.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
 
                 showGraph(viewer, graph);
                 if (file.Contains(fileName))
