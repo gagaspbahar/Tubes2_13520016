@@ -16,8 +16,9 @@ namespace FolderCrawler
     {
         string filename;
         string root;
-        bool findAll;
+        bool findAll = false;
         string methodUsed;
+        bool DFSalive = true;
         public void wait(int milliseconds)
         {
             //fungsi wait biar graph dibuatnya ga instan, biar bisa "munculin satu - satu (bonus)"
@@ -144,17 +145,22 @@ namespace FolderCrawler
                         }
                     }
 
-                } 
+                }  
             }
         }
 
         public void DFS(Microsoft.Msagl.GraphViewerGdi.GViewer viewer, Microsoft.Msagl.Drawing.Graph graph, string root, string fileName, bool SearchAll)
         {
+
             string[] files = Directory.GetFiles(root);
             string[] subDirectories = Directory.GetDirectories(root);
 
             foreach (string subDirectory in subDirectories)
             {
+                if (!DFSalive)
+                {
+                    return;
+                }
                 wait(100);
                 var subDirectoryName = new DirectoryInfo(subDirectory).Name;
                 graph.AddEdge(root, subDirectory).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
@@ -177,8 +183,13 @@ namespace FolderCrawler
                 DFS(viewer, graph, subDirectory, fileName, SearchAll);
             }
 
+
             foreach (string file in files)
             {
+                if (!DFSalive)
+                {
+                    return;
+                }
                 wait(100);
                 var fileLastName = new DirectoryInfo(file).Name;
                 graph.AddEdge(root, file).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
@@ -198,9 +209,11 @@ namespace FolderCrawler
                 showGraph(viewer, graph);
                 if (file.Contains(fileName))
                 {
+                    Console.WriteLine(SearchAll);
                     colorGraph(file,graph);
                     if (!SearchAll)
                     {
+                        DFSalive = false;
                         return;
                     }
                 }
@@ -236,6 +249,7 @@ namespace FolderCrawler
             {
                 Microsoft.Msagl.GraphViewerGdi.GViewer viewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
                 Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
+                DFSalive = true;
                 DFS(viewer, graph, root, filename, findAll);
             }
         }
@@ -258,7 +272,7 @@ namespace FolderCrawler
         {
             if (allOccurence.Checked)
             {
-                  findAll = true;
+                 findAll = true;
             }
             else
             {
