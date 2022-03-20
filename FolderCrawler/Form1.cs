@@ -45,20 +45,21 @@ namespace FolderCrawler
         public void colorGraph(string entry, Microsoft.Msagl.Drawing.Graph graph)
         {
             //fungsi buat warnain semua node yang menuju file ketemu
-            Microsoft.Msagl.Drawing.Node currentNode = graph.FindNode(entry);
-            currentNode.Attr.FillColor = Microsoft.Msagl.Drawing.Color.PaleGreen;
+            Microsoft.Msagl.Drawing.Node currentNode = null;
             for (int i = 0; i < entry.Length; i++)
             {
                 if (entry[i] == Path.DirectorySeparatorChar)
                 {
-                    string sliced = entry.Substring(0, i);
                     currentNode = graph.FindNode(sliced);
                     if (currentNode != null)
                     {
                         currentNode.Attr.FillColor = Microsoft.Msagl.Drawing.Color.PaleGreen;
                     }
+                    
                 }
             }
+            currentNode = graph.FindNode(entry); 
+            currentNode.Attr.FillColor = Microsoft.Msagl.Drawing.Color.PaleGreen;
         }
 
         public void showGraph(Microsoft.Msagl.GraphViewerGdi.GViewer viewer, Microsoft.Msagl.Drawing.Graph graph)
@@ -90,13 +91,15 @@ namespace FolderCrawler
                 {
                     wait(100);
                     var subDirectoryName = new DirectoryInfo(subDirectory).Name;
-                    graph.AddEdge(queueHead, subDirectory);
+                    graph.AddEdge(queueHead, subDirectory).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
 
                     Microsoft.Msagl.Drawing.Node parent = graph.FindNode(queueHead);
                     Microsoft.Msagl.Drawing.Node child = graph.FindNode(subDirectory);
 
                     parent.LabelText = dirName;
                     child.LabelText = subDirectoryName;
+                    parent.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
+                    child.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
 
                     DirectoryQueue.Enqueue(subDirectory);
                     showGraph(viewer,graph);
@@ -106,7 +109,7 @@ namespace FolderCrawler
                     wait(100); 
 
                     string fileLastName = new DirectoryInfo(entry).Name;
-                    graph.AddEdge(queueHead, entry);
+                    graph.AddEdge(queueHead, entry).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
 
                     Microsoft.Msagl.Drawing.Node parent = graph.FindNode(queueHead);
                     Microsoft.Msagl.Drawing.Node child = graph.FindNode(entry);
@@ -114,6 +117,8 @@ namespace FolderCrawler
                     //ganti nama node dari directory jadi nama file/directornya doang
                     parent.LabelText = dirName;
                     child.LabelText = fileLastName;
+                    parent.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
+                    child.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
 
                     showGraph(viewer, graph);
                     if (entry.Contains(fileName))
