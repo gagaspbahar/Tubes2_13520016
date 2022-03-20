@@ -1,8 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
 
 namespace FolderCrawler
 {
@@ -15,6 +21,7 @@ namespace FolderCrawler
         string methodUsed;
         bool DFSalive = true;
         bool isFound = false;
+        double timeTaken = 0;
         public void wait(int milliseconds)
         {
             //fungsi wait biar graph dibuatnya ga instan, biar bisa "munculin satu - satu (bonus)"
@@ -31,7 +38,7 @@ namespace FolderCrawler
                 timer1.Enabled = false;
                 timer1.Stop();
           // Console.WriteLine("stop wait timer");
-      };
+        };
 
             while (timer1.Enabled)
             {
@@ -93,7 +100,6 @@ namespace FolderCrawler
             {
 
                 queueHead = DirectoryQueue.Dequeue();
-                int i;
                 Console.WriteLine("NOW SEARCHING IN DIRECTORY : {0}", queueHead);
                 string[] fileEntries = Directory.GetFiles(queueHead);
                 string[] subDirectories = Directory.GetDirectories(queueHead);
@@ -273,9 +279,11 @@ namespace FolderCrawler
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Stopwatch stopwatch = new Stopwatch();
             panel1.Controls.Clear();
+            stopwatch.Start();
             if (methodUsed == "BFS")
-            {
+            {       
                 BFS(root, filename, findAll);
             }
             else if (methodUsed == "DFS")
@@ -285,6 +293,9 @@ namespace FolderCrawler
                 DFSalive = true;
                 DFS(viewer, graph, root, filename, findAll);
             }
+            stopwatch.Stop();
+            timeTaken = stopwatch.ElapsedMilliseconds / 1000;
+            timeTakenLabel.Text = "Time taken: " + timeTaken.ToString("0.00") + "s";
         }
 
         private void chooseFolder_Click(object sender, EventArgs e)
