@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
 
 namespace FolderCrawler
 {
@@ -19,6 +20,8 @@ namespace FolderCrawler
         bool findAll = false;
         string methodUsed;
         bool DFSalive = true;
+        bool isFound = false;
+        int timeTaken = 0;
         public void wait(int milliseconds)
         {
             //fungsi wait biar graph dibuatnya ga instan, biar bisa "munculin satu - satu (bonus)"
@@ -90,6 +93,9 @@ namespace FolderCrawler
             Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
             Microsoft.Msagl.Drawing.Color redColor = Microsoft.Msagl.Drawing.Color.Red;
             Microsoft.Msagl.Drawing.Color roseColor = Microsoft.Msagl.Drawing.Color.MistyRose;
+            Microsoft.Msagl.Drawing.Color blackColor = Microsoft.Msagl.Drawing.Color.Black;
+            Microsoft.Msagl.Drawing.Color whiteColor = Microsoft.Msagl.Drawing.Color.White;
+            isFound = false;
 
             Queue<string> DirectoryQueue = new Queue<string>();
             DirectoryQueue.Enqueue(root);
@@ -123,7 +129,15 @@ namespace FolderCrawler
                     wait(100); 
 
                     string fileLastName = new DirectoryInfo(entry).Name;
-                    graph.AddEdge(queueHead, entry).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
+
+                    if (!isFound)
+                    {
+                        graph.AddEdge(queueHead, entry).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
+                    }
+                    else
+                    {
+                        graph.AddEdge(queueHead, entry).Attr.Color = Microsoft.Msagl.Drawing.Color.Black;
+                    }
 
                     Microsoft.Msagl.Drawing.Node parent = graph.FindNode(queueHead);
                     Microsoft.Msagl.Drawing.Node child = graph.FindNode(entry);
@@ -131,8 +145,16 @@ namespace FolderCrawler
                     //ganti nama node dari directory jadi nama file/directornya doang
                     parent.LabelText = dirName;
                     child.LabelText = fileLastName;
-                    parent.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
-                    child.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
+                    if (!isFound)
+                    {
+                        parent.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
+                        child.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
+                    }
+                    else
+                    {
+                        parent.Attr.FillColor = Microsoft.Msagl.Drawing.Color.White;
+                        child.Attr.FillColor = Microsoft.Msagl.Drawing.Color.White;
+                    }
 
                     showGraph(viewer, graph);
                     if (entry.Contains(fileName))
@@ -141,8 +163,9 @@ namespace FolderCrawler
                         colorGraph(entry, graph);
                         if (!SearchAll)
                         {
-                            return;
+                            isFound = true;
                         }
+
                     }
 
                 }  
@@ -155,6 +178,7 @@ namespace FolderCrawler
             string[] files = Directory.GetFiles(root);
             string[] subDirectories = Directory.GetDirectories(root);
 
+            isFound = false;
             foreach (string subDirectory in subDirectories)
             {
                 if (!DFSalive)
