@@ -43,7 +43,7 @@
             this.allOccurence = new System.Windows.Forms.CheckBox();
             this.chosenFile = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.timeTaken = new System.Windows.Forms.Label();
+            this.timeTakenLabel = new System.Windows.Forms.Label();
             this.link = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
@@ -215,15 +215,15 @@
             this.panel1.Size = new System.Drawing.Size(656, 463);
             this.panel1.TabIndex = 20;
             // 
-            // timeTaken
+            // timeTakenLabel
             // 
-            this.timeTaken.AutoSize = true;
-            this.timeTaken.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timeTaken.Location = new System.Drawing.Point(560, 584);
-            this.timeTaken.Name = "timeTaken";
-            this.timeTaken.Size = new System.Drawing.Size(139, 27);
-            this.timeTaken.TabIndex = 21;
-            this.timeTaken.Text = "Time Taken: ";
+            this.timeTakenLabel.AutoSize = true;
+            this.timeTakenLabel.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeTakenLabel.Location = new System.Drawing.Point(560, 584);
+            this.timeTakenLabel.Name = "timeTakenLabel";
+            this.timeTakenLabel.Size = new System.Drawing.Size(139, 27);
+            this.timeTakenLabel.TabIndex = 21;
+            this.timeTakenLabel.Text = "Time Taken: ";
             // 
             // link
             // 
@@ -244,7 +244,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1237, 664);
             this.Controls.Add(this.link);
-            this.Controls.Add(this.timeTaken);
+            this.Controls.Add(this.timeTakenLabel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.allOccurence);
             this.Controls.Add(this.inputFilename);
@@ -284,7 +284,7 @@
         private System.Windows.Forms.CheckBox allOccurence;
         private System.Windows.Forms.Label chosenFile;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label timeTaken;
+        private System.Windows.Forms.Label timeTakenLabel;
         private System.Windows.Forms.LinkLabel link;
     }
 }

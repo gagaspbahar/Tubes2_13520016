@@ -21,7 +21,7 @@ namespace FolderCrawler
         string methodUsed;
         bool DFSalive = true;
         bool isFound = false;
-        int timeTaken = 0;
+        double timeTaken = 0;
         public void wait(int milliseconds)
         {
             //fungsi wait biar graph dibuatnya ga instan, biar bisa "munculin satu - satu (bonus)"
@@ -264,9 +264,11 @@ namespace FolderCrawler
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Stopwatch stopwatch = new Stopwatch();
             panel1.Controls.Clear();
+            stopwatch.Start();
             if (methodUsed == "BFS")
-            {
+            {       
                 BFS(root, filename, findAll);
             }
             else if(methodUsed == "DFS")
@@ -276,6 +278,9 @@ namespace FolderCrawler
                 DFSalive = true;
                 DFS(viewer, graph, root, filename, findAll);
             }
+            stopwatch.Stop();
+            timeTaken = stopwatch.ElapsedMilliseconds / 1000;
+            timeTakenLabel.Text = "Time taken: " + timeTaken.ToString("0.00") + "s";
         }
 
         private void chooseFolder_Click(object sender, EventArgs e)
