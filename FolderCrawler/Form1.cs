@@ -37,8 +37,8 @@ namespace FolderCrawler
             {
                 timer1.Enabled = false;
                 timer1.Stop();
-          // Console.WriteLine("stop wait timer");
-        };
+                // Console.WriteLine("stop wait timer");
+            };
 
             while (timer1.Enabled)
             {
@@ -118,9 +118,9 @@ namespace FolderCrawler
 
                     parent.LabelText = dirName;
                     child.LabelText = subDirectoryName;
-                    if(parent.Attr.FillColor != Microsoft.Msagl.Drawing.Color.PaleGreen)
+                    if (parent.Attr.FillColor != Microsoft.Msagl.Drawing.Color.PaleGreen)
                     {
-                    parent.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
+                        parent.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
                     }
                     child.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
 
@@ -146,8 +146,6 @@ namespace FolderCrawler
                     parent.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
                     child.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
 
-
-
                     showGraph(viewer, graph);
 
                     if (entry.Contains(fileName))
@@ -155,7 +153,7 @@ namespace FolderCrawler
                         colorGraph(entry, graph);
                         if (!SearchAll)
                         {
-                            foreach(string uncheckedDirectories in DirectoryQueue)
+                            foreach (string uncheckedDirectories in DirectoryQueue)
                             {
                                 string[] uncheckedFiles = Directory.GetFiles(uncheckedDirectories);
                                 string[] uncheckedSubDirectories = Directory.GetDirectories(uncheckedDirectories);
@@ -184,79 +182,125 @@ namespace FolderCrawler
             }
         }
 
-
-
-
         public void DFS(Microsoft.Msagl.GraphViewerGdi.GViewer viewer, Microsoft.Msagl.Drawing.Graph graph, string root, string fileName, bool SearchAll)
         {
-
+            // DEFINE VARIABLE
             string[] files = Directory.GetFiles(root);
             string[] subDirectories = Directory.GetDirectories(root);
-
             isFound = false;
+
+            // STOP RECURSIVE
+            if (!DFSalive)
+            {
+                // BLACK COLORING TO UNCHEKCED DIRECTORY
+                Microsoft.Msagl.Drawing.Node childDir = graph.FindNode(root);
+                childDir.LabelText = new DirectoryInfo(root).Name;
+                childDir.Attr.FillColor = Microsoft.Msagl.Drawing.Color.White;
+                Microsoft.Msagl.Drawing.Edge edges = childDir.InEdges.ElementAt(0);
+                edges.Attr.Color = Microsoft.Msagl.Drawing.Color.Black;
+
+                // BLACK COLORING TO UNCHECKED FILES
+                foreach (string file in files)
+                {
+                    Microsoft.Msagl.Drawing.Node childFile = graph.FindNode(file);
+                    if (childFile != null)
+                    {
+                        childFile.LabelText = new DirectoryInfo(file).Name;
+                        childFile.Attr.FillColor = Microsoft.Msagl.Drawing.Color.White;
+                        Microsoft.Msagl.Drawing.Edge edgesFile = childFile.InEdges.ElementAt(0);
+                        edgesFile.Attr.Color = Microsoft.Msagl.Drawing.Color.Black;
+                    }
+                }
+
+                return;
+            }
+
             foreach (string subDirectory in subDirectories)
             {
-                if (!DFSalive)
-                {
-                    return;
-                }
+
+                Console.WriteLine("NOW SEARCHING IN DIRECTORY : {0}", subDirectory);
+
                 wait(100);
                 var subDirectoryName = new DirectoryInfo(subDirectory).Name;
-                graph.AddEdge(root, subDirectory).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
+                var dirName = new DirectoryInfo(root).Name;
 
+                // ADD NODES TO GRAPH
+                graph.AddEdge(root, subDirectory).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
                 Microsoft.Msagl.Drawing.Node parent = graph.FindNode(root);
                 Microsoft.Msagl.Drawing.Node child = graph.FindNode(subDirectory);
-                if (parent.Attr.FillColor != Microsoft.Msagl.Drawing.Color.PaleGreen)
-                {
-                    parent.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
-                }
-
-                child.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
-
-                var dirName = new DirectoryInfo(root).Name;
                 parent.LabelText = dirName;
                 child.LabelText = subDirectoryName;
 
-                showGraph(viewer, graph);
-                // REKURSIF
-                DFS(viewer, graph, subDirectory, fileName, SearchAll);
-            }
-
-
-            foreach (string file in files)
-            {
-                if (!DFSalive)
-                {
-                    return;
-                }
-                wait(100);
-                var fileLastName = new DirectoryInfo(file).Name;
-                graph.AddEdge(root, file).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
-
-                Microsoft.Msagl.Drawing.Node parent = graph.FindNode(root);
-                Microsoft.Msagl.Drawing.Node child = graph.FindNode(file);
-
-                var dirName = new DirectoryInfo(root).Name;
-                parent.LabelText = dirName;
-                child.LabelText = fileLastName;
+                // COLOR GRAPH
                 if (parent.Attr.FillColor != Microsoft.Msagl.Drawing.Color.PaleGreen)
                 {
                     parent.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
                 }
+
                 child.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
 
+                // SHOW GRAPH
                 showGraph(viewer, graph);
-                if (file.Contains(fileName))
+
+                // RECURSIVE
+                DFS(viewer, graph, subDirectory, fileName, SearchAll);
+            }
+
+            foreach (string file in files)
+            {
+                if (DFSalive)
                 {
-                    Console.WriteLine(SearchAll);
-                    colorGraph(file, graph);
-                    if (!SearchAll)
+
+                    wait(100);
+                    var fileLastName = new DirectoryInfo(file).Name;
+                    var dirName = new DirectoryInfo(root).Name;
+
+                    // ADD NODES TO GRAPH
+                    graph.AddEdge(root, file).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
+                    Microsoft.Msagl.Drawing.Node parent = graph.FindNode(root);
+                    Microsoft.Msagl.Drawing.Node child = graph.FindNode(file);
+                    parent.LabelText = dirName;
+                    child.LabelText = fileLastName;
+
+                    // COLOR GRAPH
+                    if (parent.Attr.FillColor != Microsoft.Msagl.Drawing.Color.PaleGreen)
                     {
-                        DFSalive = false;
-                        return;
+                        parent.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
+                    }
+
+                    // SHOW GRAPH
+                    child.Attr.FillColor = Microsoft.Msagl.Drawing.Color.MistyRose;
+                    showGraph(viewer, graph);
+
+                    // CHECK FOR FILE
+                    if (file.Contains(fileName))
+                    {
+                        Console.WriteLine("FILE FOUND IN {0}", dirName);
+                        colorGraph(file, graph);
+                        if (!SearchAll)
+                        {
+                            DFSalive = false;
+                            return;
+                        }
                     }
                 }
+                else
+                // EDGE CASES
+                {
+                    // BLACK COLORING TO UNCHECKED FILES
+                    Microsoft.Msagl.Drawing.Node childFile = graph.FindNode(file);
+                    if (childFile != null)
+                    {
+                        childFile.LabelText = new DirectoryInfo(file).Name;
+                        childFile.Attr.FillColor = Microsoft.Msagl.Drawing.Color.White;
+                        Microsoft.Msagl.Drawing.Edge edgesFile = childFile.InEdges.ElementAt(0);
+                        edgesFile.Attr.Color = Microsoft.Msagl.Drawing.Color.Black;
+                    }
+
+                    return;
+                }
             }
+
         }
 
         public FolderCrawlerForm()
@@ -283,7 +327,7 @@ namespace FolderCrawler
             panel1.Controls.Clear();
             stopwatch.Start();
             if (methodUsed == "BFS")
-            {       
+            {
                 BFS(root, filename, findAll);
             }
             else if (methodUsed == "DFS")
