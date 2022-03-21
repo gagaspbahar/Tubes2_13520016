@@ -22,6 +22,7 @@ namespace FolderCrawler
         bool DFSalive = true;
         bool isFound = false;
         double timeTaken = 0;
+        List<string> foundLinks = new List<string>();
         public void wait(int milliseconds)
         {
             //fungsi wait biar graph dibuatnya ga instan, biar bisa "munculin satu - satu (bonus)"
@@ -148,8 +149,9 @@ namespace FolderCrawler
 
                     showGraph(viewer, graph);
 
-                    if (entry.Contains(fileName))
+                    if (fileLastName.Equals(fileName))
                     {
+
                         colorGraph(entry, graph);
                         if (!SearchAll)
                         {
@@ -273,7 +275,7 @@ namespace FolderCrawler
                     showGraph(viewer, graph);
 
                     // CHECK FOR FILE
-                    if (file.Contains(fileName))
+                    if (file.Equals(fileName))
                     {
                         Console.WriteLine("FILE FOUND IN {0}", dirName);
                         colorGraph(file, graph);
@@ -338,7 +340,7 @@ namespace FolderCrawler
                 DFS(viewer, graph, root, filename, findAll);
             }
             stopwatch.Stop();
-            timeTaken = stopwatch.ElapsedMilliseconds / 1000;
+            timeTaken = stopwatch.ElapsedMilliseconds / 1000.00;
             timeTakenLabel.Text = "Time taken: " + timeTaken.ToString("0.00") + "s";
         }
 
