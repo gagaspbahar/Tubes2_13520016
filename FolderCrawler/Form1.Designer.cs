@@ -206,7 +206,7 @@
             // 
             this.timeTakenLabel.AutoSize = true;
             this.timeTakenLabel.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timeTakenLabel.Location = new System.Drawing.Point(420, 440);
+            this.timeTakenLabel.Location = new System.Drawing.Point(420, 431);
             this.timeTakenLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.timeTakenLabel.Name = "timeTakenLabel";
             this.timeTakenLabel.Size = new System.Drawing.Size(111, 22);
@@ -215,17 +215,21 @@
             // 
             // hyperlinkListBox
             // 
+            this.hyperlinkListBox.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hyperlinkListBox.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.hyperlinkListBox.FormattingEnabled = true;
-            this.hyperlinkListBox.Location = new System.Drawing.Point(424, 505);
+            this.hyperlinkListBox.ItemHeight = 15;
+            this.hyperlinkListBox.Location = new System.Drawing.Point(424, 489);
             this.hyperlinkListBox.Name = "hyperlinkListBox";
-            this.hyperlinkListBox.Size = new System.Drawing.Size(492, 43);
+            this.hyperlinkListBox.Size = new System.Drawing.Size(492, 49);
             this.hyperlinkListBox.TabIndex = 22;
+            this.hyperlinkListBox.SelectedIndexChanged += new System.EventHandler(this.hyperlinkListBox_SelectedIndexChanged);
             // 
             // hyperlinks
             // 
             this.hyperlinks.AutoSize = true;
             this.hyperlinks.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hyperlinks.Location = new System.Drawing.Point(420, 480);
+            this.hyperlinks.Location = new System.Drawing.Point(420, 464);
             this.hyperlinks.Name = "hyperlinks";
             this.hyperlinks.Size = new System.Drawing.Size(103, 22);
             this.hyperlinks.TabIndex = 23;
@@ -256,7 +260,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BFSRadioButton);
             this.Name = "FolderCrawlerForm";
-            this.Text = "Form1";
+            this.Text = "CSFC - CoolStory Folder Crawler";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

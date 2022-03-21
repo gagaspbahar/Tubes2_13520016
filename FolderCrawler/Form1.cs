@@ -151,8 +151,8 @@ namespace FolderCrawler
 
                     if (fileLastName.Equals(fileName))
                     {
-
                         colorGraph(entry, graph);
+                        foundLinks.Add(entry);
                         if (!SearchAll)
                         {
                             foreach (string uncheckedDirectories in DirectoryQueue)
@@ -275,9 +275,10 @@ namespace FolderCrawler
                     showGraph(viewer, graph);
 
                     // CHECK FOR FILE
-                    if (file.Equals(fileName))
+                    if (fileLastName.Equals(fileName))
                     {
-                        Console.WriteLine("FILE FOUND IN {0}", dirName);
+                        Console.WriteLine("FILE FOUND IN {0}", file);
+                        foundLinks.Add(file);
                         colorGraph(file, graph);
                         if (!SearchAll)
                         {
@@ -342,6 +343,10 @@ namespace FolderCrawler
             stopwatch.Stop();
             timeTaken = stopwatch.ElapsedMilliseconds / 1000.00;
             timeTakenLabel.Text = "Time taken: " + timeTaken.ToString("0.00") + "s";
+            foreach (var link in foundLinks)
+            {
+                hyperlinkListBox.Items.Add(link);
+            }
         }
 
         private void chooseFolder_Click(object sender, EventArgs e)
@@ -381,6 +386,12 @@ namespace FolderCrawler
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void hyperlinkListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selected = (string)hyperlinkListBox.SelectedItem;
+            System.Diagnostics.Process.Start(selected);
         }
     }
 }
