@@ -329,20 +329,28 @@ namespace FolderCrawler
             Stopwatch stopwatch = new Stopwatch();
             panel1.Controls.Clear();
             stopwatch.Start();
-            if (methodUsed == "BFS")
+            try
             {
-                BFS(root, filename, findAll);
+                if (methodUsed == "BFS")
+                {
+                    BFS(root, filename, findAll);
+                }
+                else if (methodUsed == "DFS")
+                {
+                    Microsoft.Msagl.GraphViewerGdi.GViewer viewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
+                    Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
+                    DFSalive = true;
+                    DFS(viewer, graph, root, filename, findAll);
+                }
+                errorNoFolder.Text = "";
+                stopwatch.Stop();
+                timeTaken = stopwatch.ElapsedMilliseconds / 1000.00;
+                timeTakenLabel.Text = "Time taken: " + timeTaken.ToString("0.00") + "s";
             }
-            else if (methodUsed == "DFS")
+            catch (Exception ex)
             {
-                Microsoft.Msagl.GraphViewerGdi.GViewer viewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
-                Microsoft.Msagl.Drawing.Graph graph = new Microsoft.Msagl.Drawing.Graph("graph");
-                DFSalive = true;
-                DFS(viewer, graph, root, filename, findAll);
+                errorNoFolder.Text = "You need to select a folder first!";
             }
-            stopwatch.Stop();
-            timeTaken = stopwatch.ElapsedMilliseconds / 1000.00;
-            timeTakenLabel.Text = "Time taken: " + timeTaken.ToString("0.00") + "s";
             foreach (var link in foundLinks)
             {
                 hyperlinkListBox.Items.Add(link);
