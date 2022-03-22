@@ -402,5 +402,15 @@ namespace FolderCrawler
             string selected = (string)hyperlinkListBox.SelectedItem;
             System.Diagnostics.Process.Start(selected);
         }
+
+        private void errorNoFolder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
