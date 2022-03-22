@@ -194,7 +194,7 @@ namespace FolderCrawler
             // STOP RECURSIVE
             if (!DFSalive)
             {
-                // BLACK COLORING TO UNCHEKCED DIRECTORY
+                // BLACK COLORING TO UNCHECKED DIRECTORY
                 Microsoft.Msagl.Drawing.Node childDir = graph.FindNode(root);
                 childDir.LabelText = new DirectoryInfo(root).Name;
                 childDir.Attr.FillColor = Microsoft.Msagl.Drawing.Color.White;
@@ -250,12 +250,13 @@ namespace FolderCrawler
 
             foreach (string file in files)
             {
+                // INITIALIZE VARIABLE
+                wait(100);
+                var fileLastName = new DirectoryInfo(file).Name;
+                var dirName = new DirectoryInfo(root).Name;
+
                 if (DFSalive)
                 {
-
-                    wait(100);
-                    var fileLastName = new DirectoryInfo(file).Name;
-                    var dirName = new DirectoryInfo(root).Name;
 
                     // ADD NODES TO GRAPH
                     graph.AddEdge(root, file).Attr.Color = Microsoft.Msagl.Drawing.Color.Red;
@@ -287,20 +288,20 @@ namespace FolderCrawler
                         }
                     }
                 }
+
                 else
                 // EDGE CASES
                 {
-                    // BLACK COLORING TO UNCHECKED FILES
-                    Microsoft.Msagl.Drawing.Node childFile = graph.FindNode(file);
-                    if (childFile != null)
-                    {
-                        childFile.LabelText = new DirectoryInfo(file).Name;
-                        childFile.Attr.FillColor = Microsoft.Msagl.Drawing.Color.White;
-                        Microsoft.Msagl.Drawing.Edge edgesFile = childFile.InEdges.ElementAt(0);
-                        edgesFile.Attr.Color = Microsoft.Msagl.Drawing.Color.Black;
-                    }
+                    // ADD NODES TO GRAPH
+                    graph.AddEdge(root, file).Attr.Color = Microsoft.Msagl.Drawing.Color.Black;
+                    Microsoft.Msagl.Drawing.Node parent = graph.FindNode(root);
+                    Microsoft.Msagl.Drawing.Node child = graph.FindNode(file);
+                    parent.LabelText = dirName;
+                    child.LabelText = fileLastName;
 
-                    return;
+                    // SHOW GRAPH
+                    child.Attr.FillColor = Microsoft.Msagl.Drawing.Color.White;
+                    showGraph(viewer, graph);
                 }
             }
 

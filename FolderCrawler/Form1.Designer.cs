@@ -53,10 +53,11 @@
             // 
             this.BFSRadioButton.AutoSize = true;
             this.BFSRadioButton.BackColor = System.Drawing.Color.Transparent;
-            this.BFSRadioButton.Font = new System.Drawing.Font("Open Sans", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BFSRadioButton.Location = new System.Drawing.Point(50, 314);
+            this.BFSRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BFSRadioButton.Location = new System.Drawing.Point(67, 386);
+            this.BFSRadioButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BFSRadioButton.Name = "BFSRadioButton";
-            this.BFSRadioButton.Size = new System.Drawing.Size(48, 21);
+            this.BFSRadioButton.Size = new System.Drawing.Size(61, 22);
             this.BFSRadioButton.TabIndex = 6;
             this.BFSRadioButton.TabStop = true;
             this.BFSRadioButton.Text = "BFS";
@@ -67,10 +68,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Open Sans", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(249, 9);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(385, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(366, 33);
+            this.label1.Size = new System.Drawing.Size(446, 36);
             this.label1.TabIndex = 7;
             this.label1.Text = "The Cool Story Folder Crawler";
             // 
@@ -78,10 +80,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(46, 50);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(61, 62);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 26);
+            this.label2.Size = new System.Drawing.Size(70, 29);
             this.label2.TabIndex = 8;
             this.label2.Text = "Input";
             // 
@@ -89,10 +92,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Open Sans", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(621, 50);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(828, 62);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 26);
+            this.label3.Size = new System.Drawing.Size(90, 29);
             this.label3.TabIndex = 9;
             this.label3.Text = "Output";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -101,10 +105,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(46, 100);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(61, 123);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(204, 20);
+            this.label4.Size = new System.Drawing.Size(247, 24);
             this.label4.TabIndex = 10;
             this.label4.Text = "Choose Starting Directory";
             // 
@@ -112,10 +117,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(46, 190);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(61, 234);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(130, 20);
+            this.label5.Size = new System.Drawing.Size(158, 24);
             this.label5.TabIndex = 11;
             this.label5.Text = "Input File Name";
             // 
@@ -123,10 +129,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Open Sans", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(46, 281);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(61, 346);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(191, 20);
+            this.label6.Size = new System.Drawing.Size(232, 24);
             this.label6.TabIndex = 12;
             this.label6.Text = "Input Metode Pencarian";
             // 
@@ -134,10 +141,11 @@
             // 
             this.DFSButton.AutoSize = true;
             this.DFSButton.BackColor = System.Drawing.Color.Transparent;
-            this.DFSButton.Font = new System.Drawing.Font("Open Sans", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DFSButton.Location = new System.Drawing.Point(50, 341);
+            this.DFSButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DFSButton.Location = new System.Drawing.Point(67, 420);
+            this.DFSButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DFSButton.Name = "DFSButton";
-            this.DFSButton.Size = new System.Drawing.Size(49, 21);
+            this.DFSButton.Size = new System.Drawing.Size(62, 22);
             this.DFSButton.TabIndex = 13;
             this.DFSButton.TabStop = true;
             this.DFSButton.Text = "DFS";
@@ -149,9 +157,10 @@
             this.button1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(49, 376);
+            this.button1.Location = new System.Drawing.Point(65, 463);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 32);
+            this.button1.Size = new System.Drawing.Size(131, 39);
             this.button1.TabIndex = 14;
             this.button1.Text = "Search";
             this.button1.UseVisualStyleBackColor = false;
@@ -161,9 +170,10 @@
             // 
             this.chooseFolder.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.chooseFolder.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.chooseFolder.Location = new System.Drawing.Point(49, 131);
+            this.chooseFolder.Location = new System.Drawing.Point(65, 161);
+            this.chooseFolder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chooseFolder.Name = "chooseFolder";
-            this.chooseFolder.Size = new System.Drawing.Size(96, 27);
+            this.chooseFolder.Size = new System.Drawing.Size(128, 33);
             this.chooseFolder.TabIndex = 15;
             this.chooseFolder.Text = "Choose Folder...";
             this.chooseFolder.UseVisualStyleBackColor = false;
@@ -173,9 +183,10 @@
             // 
             this.inputFilename.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.inputFilename.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inputFilename.Location = new System.Drawing.Point(50, 218);
+            this.inputFilename.Location = new System.Drawing.Point(67, 268);
+            this.inputFilename.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.inputFilename.Name = "inputFilename";
-            this.inputFilename.Size = new System.Drawing.Size(198, 20);
+            this.inputFilename.Size = new System.Drawing.Size(263, 23);
             this.inputFilename.TabIndex = 17;
             this.inputFilename.Text = "e.g. \"word.pdf\"";
             this.inputFilename.TextChanged += new System.EventHandler(this.inputFilename_TextChanged);
@@ -184,10 +195,11 @@
             // 
             this.allOccurence.AutoSize = true;
             this.allOccurence.BackColor = System.Drawing.Color.Transparent;
-            this.allOccurence.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.allOccurence.Location = new System.Drawing.Point(50, 246);
+            this.allOccurence.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.allOccurence.Location = new System.Drawing.Point(67, 303);
+            this.allOccurence.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.allOccurence.Name = "allOccurence";
-            this.allOccurence.Size = new System.Drawing.Size(124, 19);
+            this.allOccurence.Size = new System.Drawing.Size(163, 21);
             this.allOccurence.TabIndex = 19;
             this.allOccurence.Text = "Find all occurence";
             this.allOccurence.UseVisualStyleBackColor = false;
@@ -197,10 +209,11 @@
             // 
             this.chosenFile.AutoEllipsis = true;
             this.chosenFile.BackColor = System.Drawing.Color.Transparent;
-            this.chosenFile.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chosenFile.Location = new System.Drawing.Point(151, 138);
+            this.chosenFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chosenFile.Location = new System.Drawing.Point(201, 170);
+            this.chosenFile.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.chosenFile.Name = "chosenFile";
-            this.chosenFile.Size = new System.Drawing.Size(237, 13);
+            this.chosenFile.Size = new System.Drawing.Size(316, 16);
             this.chosenFile.TabIndex = 16;
             this.chosenFile.Text = "No File Chosen";
             this.chosenFile.UseCompatibleTextRendering = true;
@@ -208,32 +221,33 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Location = new System.Drawing.Point(424, 87);
+            this.panel1.Location = new System.Drawing.Point(565, 107);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(492, 332);
+            this.panel1.Size = new System.Drawing.Size(656, 409);
             this.panel1.TabIndex = 20;
             // 
             // timeTakenLabel
             // 
             this.timeTakenLabel.AutoSize = true;
             this.timeTakenLabel.BackColor = System.Drawing.Color.Transparent;
-            this.timeTakenLabel.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timeTakenLabel.Location = new System.Drawing.Point(420, 431);
-            this.timeTakenLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.timeTakenLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeTakenLabel.Location = new System.Drawing.Point(560, 530);
             this.timeTakenLabel.Name = "timeTakenLabel";
-            this.timeTakenLabel.Size = new System.Drawing.Size(111, 22);
+            this.timeTakenLabel.Size = new System.Drawing.Size(140, 25);
             this.timeTakenLabel.TabIndex = 21;
             this.timeTakenLabel.Text = "Time Taken: ";
             // 
             // hyperlinkListBox
             // 
-            this.hyperlinkListBox.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hyperlinkListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hyperlinkListBox.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.hyperlinkListBox.FormattingEnabled = true;
-            this.hyperlinkListBox.ItemHeight = 15;
-            this.hyperlinkListBox.Location = new System.Drawing.Point(424, 489);
+            this.hyperlinkListBox.ItemHeight = 17;
+            this.hyperlinkListBox.Location = new System.Drawing.Point(565, 602);
+            this.hyperlinkListBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.hyperlinkListBox.Name = "hyperlinkListBox";
-            this.hyperlinkListBox.Size = new System.Drawing.Size(492, 49);
+            this.hyperlinkListBox.Size = new System.Drawing.Size(655, 55);
             this.hyperlinkListBox.TabIndex = 22;
             this.hyperlinkListBox.SelectedIndexChanged += new System.EventHandler(this.hyperlinkListBox_SelectedIndexChanged);
             // 
@@ -241,10 +255,11 @@
             // 
             this.hyperlinks.AutoSize = true;
             this.hyperlinks.BackColor = System.Drawing.Color.Transparent;
-            this.hyperlinks.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hyperlinks.Location = new System.Drawing.Point(420, 464);
+            this.hyperlinks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hyperlinks.Location = new System.Drawing.Point(560, 571);
+            this.hyperlinks.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.hyperlinks.Name = "hyperlinks";
-            this.hyperlinks.Size = new System.Drawing.Size(103, 22);
+            this.hyperlinks.Size = new System.Drawing.Size(125, 25);
             this.hyperlinks.TabIndex = 23;
             this.hyperlinks.Text = "Found files:";
             // 
@@ -252,21 +267,22 @@
             // 
             this.errorNoFolder.AutoSize = true;
             this.errorNoFolder.BackColor = System.Drawing.Color.Transparent;
-            this.errorNoFolder.Font = new System.Drawing.Font("Open Sans", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorNoFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorNoFolder.ForeColor = System.Drawing.Color.Red;
-            this.errorNoFolder.Location = new System.Drawing.Point(51, 161);
+            this.errorNoFolder.Location = new System.Drawing.Point(68, 198);
+            this.errorNoFolder.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.errorNoFolder.Name = "errorNoFolder";
-            this.errorNoFolder.Size = new System.Drawing.Size(13, 15);
+            this.errorNoFolder.Size = new System.Drawing.Size(16, 17);
             this.errorNoFolder.TabIndex = 24;
             this.errorNoFolder.Text = "  ";
             // 
             // FolderCrawlerForm
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(928, 595);
+            this.ClientSize = new System.Drawing.Size(1237, 732);
             this.Controls.Add(this.errorNoFolder);
             this.Controls.Add(this.hyperlinks);
             this.Controls.Add(this.hyperlinkListBox);
@@ -287,6 +303,7 @@
             this.Controls.Add(this.BFSRadioButton);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FolderCrawlerForm";
             this.Text = "CSFC - CoolStory Folder Crawler";
             this.Load += new System.EventHandler(this.Form1_Load);
