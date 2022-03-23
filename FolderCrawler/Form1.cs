@@ -152,7 +152,7 @@ namespace FolderCrawler
                     if (fileLastName.Equals(fileName))
                     {
                         colorGraph(entry, graph);
-                        foundLinks.Add(entry);
+                        foundLinks.Add(queueHead);
                         if (!SearchAll)
                         {
                             foreach (string uncheckedDirectories in DirectoryQueue)
@@ -279,7 +279,7 @@ namespace FolderCrawler
                     if (fileLastName.Equals(fileName))
                     {
                         Console.WriteLine("FILE FOUND IN {0}", file);
-                        foundLinks.Add(file);
+                        foundLinks.Add(root);
                         colorGraph(file, graph);
                         if (!SearchAll)
                         {
@@ -345,8 +345,8 @@ namespace FolderCrawler
                 }
                 errorNoFolder.Text = "";
                 stopwatch.Stop();
-                timeTaken = stopwatch.ElapsedMilliseconds / 1000.00;
-                timeTakenLabel.Text = "Time taken: " + timeTaken.ToString("0.00") + "s";
+                timeTaken = stopwatch.ElapsedMilliseconds / 100.00;
+                timeTakenLabel.Text = "Time taken: " + timeTaken.ToString("0.00") + "ms";
             }
             catch (Exception ex)
             {
@@ -356,6 +356,7 @@ namespace FolderCrawler
             {
                 hyperlinkListBox.Items.Add(link);
             }
+            foundLinks.Clear();
         }
 
         private void chooseFolder_Click(object sender, EventArgs e)
@@ -409,6 +410,11 @@ namespace FolderCrawler
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

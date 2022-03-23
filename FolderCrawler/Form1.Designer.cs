@@ -70,6 +70,7 @@
             this.label1.Size = new System.Drawing.Size(356, 44);
             this.label1.TabIndex = 7;
             this.label1.Text = "The Cool Story Folder Crawler";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // DFSButton
             // 
