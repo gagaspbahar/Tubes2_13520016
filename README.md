@@ -16,6 +16,7 @@
 
 
 ## General Information
+![](./test/foldercrawler.gif)
 
 Folder Crawler adalah program untuk menelusuri semua folder - folder yang ada pada direktori untuk menemukan file yang diinginkan. Program ini akan menampilkan hasil pencarian dalam bentuk Graf, Graf dibentuk secara realtime.
 
@@ -42,8 +43,7 @@ Folder Crawler adalah program untuk menelusuri semua folder - folder yang ada pa
 ## Usage
 
 - Program dapat langsung dijalankan dengan file “.exe”-nya ataupun dapat di-build terlebih dahulu di Visual Studio. 
-- Untuk menjalankan program, dapat di-run secara langsung melalui file FolderCrawler.exe yang terdapat pada direktori “(ISI NANTI)”.
-- Jika ingin melakukan build, buka file solution FolderCrawler.sln pada “(ISI NANTI)” dengan menggunakan Visual Studio dan tekan F5 ataupun CTRL + F5 untuk melakukan build. Hasil dari build tersebut akan langsung muncul dan program dapat langsung digunakan, pastikan sudah melakukan install untuk dependency MSAGL sebelumnya. Panduan install MSAGL : [Panduan Install MSAGL](#panduan-install-msagl) 
+- Untuk menjalankan program, dapat di-run secara langsung melalui file FolderCrawler.exe yang terdapat pada direktori “./bin/release”.
 
 Untuk melakukan pencarian file dengan menggunakan FolderCrawler.exe dapat dilakukan dengan cara sebagai berikut :
 
@@ -69,7 +69,8 @@ Untuk melakukan pencarian file dengan menggunakan FolderCrawler.exe dapat dilaku
 Project ini sudah  _selesai_ 
 
 ## Acknowledgements
-
+- Projek ini dikerjakan untuk memenuhi tugas besar mata kuliah IF2211 Strategi Algoritma
+- Terima kasih kepada seluruh dosen pengajar mata kuliah IF2211 dan asisten
 
 ## Contact
 Created by:
