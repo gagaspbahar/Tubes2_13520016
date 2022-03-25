@@ -101,7 +101,7 @@ namespace FolderCrawler
             {
 
                 queueHead = DirectoryQueue.Dequeue();
-                Console.WriteLine("NOW SEARCHING IN DIRECTORY : {0}", queueHead);
+                //Console.WriteLine("NOW SEARCHING IN DIRECTORY : {0}", queueHead);
                 string[] fileEntries = Directory.GetFiles(queueHead);
                 string[] subDirectories = Directory.GetDirectories(queueHead);
                 var dirName = new DirectoryInfo(queueHead).Name;
@@ -220,7 +220,7 @@ namespace FolderCrawler
             foreach (string subDirectory in subDirectories)
             {
 
-                Console.WriteLine("NOW SEARCHING IN DIRECTORY : {0}", subDirectory);
+                //Console.WriteLine("NOW SEARCHING IN DIRECTORY : {0}", subDirectory);
 
                 wait(100);
                 var subDirectoryName = new DirectoryInfo(subDirectory).Name;
@@ -278,7 +278,7 @@ namespace FolderCrawler
                     // CHECK FOR FILE
                     if (fileLastName.Equals(fileName))
                     {
-                        Console.WriteLine("FILE FOUND IN {0}", file);
+                        //Console.WriteLine("FILE FOUND IN {0}", file);
                         foundLinks.Add(root);
                         colorGraph(file, graph);
                         if (!SearchAll)
