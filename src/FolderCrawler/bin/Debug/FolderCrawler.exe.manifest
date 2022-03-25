@@ -42,62 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AutomaticGraphLayout.dll" size="1602048">
-      <assemblyIdentity name="AutomaticGraphLayout" version="0.0.0.0" publicKeyToken="6BAA2C1345E83B6E" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>GOf2VSFmrkAIlC62s2M/a6qRGSY6XJpFO42l3UlQmXI=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AutomaticGraphLayout.Drawing.dll" size="151040">
-      <assemblyIdentity name="AutomaticGraphLayout.Drawing" version="0.0.0.0" publicKeyToken="6BAA2C1345E83B6E" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>SrftUDA2Y++6nYcjAEErxyUGpys3MELoD0c8eWJ11Y4=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FolderCrawler.exe" size="18432">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FolderCrawler.exe" size="807424">
       <assemblyIdentity name="FolderCrawler" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ZeBvd78Ah+7W5/kOJL9XfYwTeOPZTH4a+jzzRN4Hh0c=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Msagl.GraphViewerGdi.dll" size="156160">
-      <assemblyIdentity name="Microsoft.Msagl.GraphViewerGdi" version="0.0.0.0" publicKeyToken="6BAA2C1345E83B6E" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>bFvNQE2UTQxs2qk45jH8BBNfI8xHZV39bubk74JeYow=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Msagl.WpfGraphControl.dll" size="67072">
-      <assemblyIdentity name="Microsoft.Msagl.WpfGraphControl" version="1.0.0.0" publicKeyToken="6BAA2C1345E83B6E" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>GEr0R8pPt/eOr8MMYwyVBMsZokpixSosu3XjfXcgtFY=</dsig:DigestValue>
+        <dsig:DigestValue>H5kQSAED8sq2Uz1Wpn3QJxLlIwqb8fHIYAY+ChgoC0E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
